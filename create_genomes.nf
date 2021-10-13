@@ -9,6 +9,7 @@ vcf_lift_ch = Channel.fromPath(params.vcf_lift)
 fasta_ch = Channel.fromPath(params.fasta)
 
 process vcf_sample_names {
+    module 'bcftools'
     input:
     file vcf_file from vcf_ch
 
@@ -27,6 +28,7 @@ process vcf2diploid {
     time '4h'
     memory '10GB'
     cpus 2
+    module 'mugqic/CrossMap:bcftools'
 
     input:
     set val(sample_name), file(vcf_file), file(vcf_lift_file), file(fasta) from samples_ch
@@ -65,6 +67,7 @@ process bwa_index_genome {
     time '12h'
     memory '16GB'
     cpus 8
+    module 'mugqic/CrossMap'
     publishDir "genomes"
 
     input:
