@@ -1,5 +1,5 @@
 params.vcf = "variants.vcf.gz"
-params.vcf_lift = "variants.vcf.gz"
+params.vcf_lift = params.vcf
 params.vcf2diploid = "vcf2diploid.jar"
 params.fasta = "genome.fa"
 
@@ -21,7 +21,7 @@ process vcf_sample_names {
     """
 }
 
-samples_ch = vcf_samples_ch.splitCsv().map{row -> "${row[0]}"}.combine(vcf_ch2).combine(vcf_lift_ch).combine(fasta_ch).take(1).view()
+samples_ch = vcf_samples_ch.splitCsv().map{row -> "${row[0]}"}.combine(vcf_ch2).combine(vcf_lift_ch).combine(fasta_ch).view()
 
 process vcf2diploid {
     time '4h'
