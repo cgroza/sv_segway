@@ -27,7 +27,7 @@ process vcf_sample_names {
 samples_ch = vcf_samples_ch.splitCsv().map{row -> "${row[0]}"}.combine(vcf_ch2).combine(vcf_lift_ch).combine(fasta_ch).view()
 
 process vcf2diploid {
-    time '4h'
+    time '12h'
     memory '10GB'
     cpus 2
     module 'mugqic/CrossMap:bcftools'
