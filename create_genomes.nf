@@ -69,7 +69,7 @@ process bwa_index_genome {
     time '12h'
     memory '16GB'
     cpus 8
-    module 'mugqic/CrossMap'
+    module 'mugqic/bwa'
     publishDir "genomes"
 
     input:
