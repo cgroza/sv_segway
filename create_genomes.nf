@@ -10,6 +10,8 @@ fasta_ch = Channel.fromPath(params.fasta)
 
 process vcf_sample_names {
     module 'bcftools'
+    executor 'local'
+
     input:
     file vcf_file from vcf_ch
 
