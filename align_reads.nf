@@ -8,6 +8,7 @@ process bwa_align {
     cpus 8
     memory '16GB'
     module 'mugqic/bwa:mugqic/samtools'
+    time '24h'
 
     input:
     set file(reads), file(genome) from reads_genome_ch
