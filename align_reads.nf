@@ -6,7 +6,7 @@ reads_genome_ch = Channel.fromPath(params.dataset).splitCsv(header:true)map{row 
 
 process bwa_align {
     cpus 8
-    memory 16GB
+    memory '16GB'
     module 'mugqic/bwa:mugqic/samtools'
 
     input:
