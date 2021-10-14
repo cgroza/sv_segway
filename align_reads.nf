@@ -20,6 +20,6 @@ process bwa_align {
 
     script:
     """
-    bwa mem -t 8 -p ${genome} ${reads} | samtools sort -@8 -OBAM -o ${reads.getSimpleName()}_${genome.getSimpleName()}.bam
+    bwa mem -t 8 -p ${genome}/${genome.getSimpleName()}.fa.gz ${reads} | samtools sort -@8 -OBAM -o ${reads.getSimpleName()}_${genome.getSimpleName()}.bam
     """
 }
